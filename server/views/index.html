@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #fff;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-btn {
+            background: url('/img/music.png') no-repeat;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 99999;
+            background-size: cover;
+        }
+
+        .play {
+            animation: music-play 1.5s linear infinite;
+        }
+
+        .arrow {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 5px;
+            width: 100%;
+            z-index: 99999;
+            animation: up-arrow 1.5s infinite;
+        }
+
+        .arrow img {
+            width: 20px;
+        }
+
+        @keyframes music-play {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes up-arrow {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0px);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(0, -5px);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(0, -18px);
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <% pages.forEach(function(page) { %>
+        <div class="swiper-slide" style="background: url(<%- page.pageMainAttr.background %>)">
+            <%- page.pageContent %>
+        </div>
+        <% }) %>
+    </div>
+</div>
+<!-- music -->
+<% if (bgmusic !== '') { %>
+<div class="music-btn play">
+    <audio src="<%- bgmusic %>" autoplay loop id="music"></audio>
+</div>
+<% } %>
+<!-- arrow -->
+<div class="arrow">
+    <img src="/img/arrow.png">
+</div>
+<script type="text/javascript" src="/js/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/js/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="/js/swiper.animate.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        onInit: function (swiper) {
+            swiperAnimateCache(swiper);
+            swiperAnimate(swiper);
+        },
+        onSlideChangeEnd: function (swiper) {
+            swiperAnimate(swiper);
+        },
+        direction: 'vertical',
+        // loop: true
+    });
+</script>
+<script>
+    var preWidth = preWidth || 320;
+    var preHeight = preHeight || 486;
+    function init() {
+        // 适配
+        var widthPer = document.body.clientWidth / preWidth;
+        var heightPer = document.body.clientHeight / preHeight;
+
+        preHeight = document.body.clientHeight;
+        preWidth = document.body.clientWidth;
+
+        $(".swiper-slide > *").each(function () {
+            $(this).css("width", ($(this).width() * widthPer) + 'px');
+        });
+        $(".swiper-slide > *").each(function () {
+            $(this).css("height", ($(this).height() * heightPer) + 'px');
+            var fontsize = parseInt($(this).css("font-size"));
+            $(this).css("font-size", (fontsize * heightPer) + 'px');
+        });
+    }
+
+    init();
+
+    $(window).on('resize', init);
+
+    var audio = document.getElementById('music');
+
+    $('.music-btn').on('click', function () {
+        if ($(this).hasClass('play')) {
+            audio.pause();
+            $(this).removeClass('play');
+        } else {
+            audio.play();
+            $(this).addClass('play');
+        }
+    });
+</script>
+</body>
+</html>

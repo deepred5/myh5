@@ -1,0 +1,38 @@
+body, ul, li, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "arial", "Microsoft Yahei";
+  font-size: 16px;
+  background: #ececec;
+}
+
+input {
+  outline: none;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}

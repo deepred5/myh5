@@ -1,0 +1,26 @@
+{
+  "name": "myh5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon --ignore frontend/ app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.1",
+    "connect-multiparty": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "log4js": "^1.1.1",
+    "mongoose": "^4.9.5",
+    "svg-captcha": "^1.3.4"
+  },
+  "devDependencies": {
+    "cross-env": "^4.0.0"
+  }
+}
