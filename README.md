@@ -1,6 +1,22 @@
 # HTML5 可视化编辑系统
 类似易企秀的简易版H5可视化制作工具
 
+## 预览图
+
+
+
+![首页](http://7xqwwf.com1.z0.glb.clouddn.com/h51.png)
+
+![作品管理](http://7xqwwf.com1.z0.glb.clouddn.com/h52.png) ![作品编辑](http://7xqwwf.com1.z0.glb.clouddn.com/h53.png)
+
+预览作品：
+
+![预览作品](http://7xqwwf.com1.z0.glb.clouddn.com/GIF.gif)
+
+
+
+
+
 ## 技术栈
 
 Vue + Node.js + MongoDB
@@ -69,7 +85,7 @@ cd frontend
 npm run dev
 ```
 
-浏览器访问http://localhost:8081
+浏览器访问[http://localhost:8081](http://localhost:8081)
 
 ## 跨域代理
 
