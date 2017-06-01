@@ -1,9 +1,9 @@
 # HTML5 可视化编辑系统
 类似易企秀的简易版H5可视化制作工具
 
+视频演示地址(http://www.bilibili.com/video/av10569720/)
+
 ## 预览图
-
-
 
 ![首页](http://7xqwwf.com1.z0.glb.clouddn.com/h51.jpg)
 
