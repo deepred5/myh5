@@ -25,6 +25,10 @@ router.post('/upload', multipartMiddleware, function (req, res) {
     var readFrom = fs.createReadStream(files.path);
     var fileName = path.basename(files.path);
     console.log(fileName);
+    if (!fs.existsSync('server/upload/uploadmusic')) {
+        fs.mkdirSync('server/upload/uploadmusic');
+        console.log('创建server/upload/uploadmusic目录成功');
+    }
     var saveTo = fs.createWriteStream(path.join('server/upload/uploadmusic', fileName));
     readFrom.pipe(saveTo);
 
